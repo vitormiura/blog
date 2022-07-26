@@ -1,26 +1,14 @@
 {
   "name": "blog",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "dev": "next dev"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vitormiura/blog.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/vitormiura/blog/issues"
-  },
-  "homepage": "https://github.com/vitormiura/blog#readme",
-  "dependencies": {
-    "next": "^12.1.6",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-youtube": "^9.0.1"
+  "devDependencies": {
+    "vite": "^3.0.0"
   }
 }
