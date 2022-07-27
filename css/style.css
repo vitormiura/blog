@@ -4,6 +4,11 @@ body{
   font-family: 'Ibarra Real Nova', serif;
 }
 
+nav a{
+  text-decoration: inherit;
+  color: inherit;
+}
+
 nav{
   width: 100%;
 }
