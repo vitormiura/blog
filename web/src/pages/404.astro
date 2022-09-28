@@ -1,0 +1,17 @@
+---
+import Layout from "../layouts/Base.astro";
+import Container from "../components/Container.astro";
+
+const seo = {
+  title: "Uh Oh! Page Not Found",
+  description: "This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support."
+}
+---
+
+<Layout seo={seo}>
+  <Container>
+    <h1>404</h1>
+    <p>Uh Oh! We couldn't find the page you were looking for</p>
+    <a href="/">Return Home</a>
+  </Container>
+</Layout>

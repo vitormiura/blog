@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Base.astro'
+import Container from '../../components/Container.astro';
+import BlogPostPreview from '../../components/BlogPostPreview.astro';
+import Paginator from '../../components/Paginator.astro'
+  
+  
+export async function getStaticPaths({paginate}) {
+
+  const posts = await Astro.glob('./*.md').then(posts =>
+	posts
+		.map(({ frontmatter, url }) => ({
+      url: url,
+			title: frontmatter.title,
+			description: frontmatter.description,
+			publishDate: frontmatter.publishDate,
+			image: frontmatter.image,
+		}))
+		// .sort((a, b) => {
+		// 	new Date(b.publishDate) - new Date(a.publishDate)
+		// })
+);
+return paginate(posts, {pageSize: 10});
+
+
+}
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+
+const seo = {
+  title: 'Example Blog',
+  description: 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.'
+}
+
+const { page } = Astro.props;
+---
+
+
+<Layout seo={seo} >
+  <Container>
+    <article class="blog-page-content__article">
+      <section class="postlist">
+        {page.data.map((post) => <BlogPostPreview post={post} />)}
+      </section>
+    </article>
+    <Paginator page={page}/>
+  </Container>
+</Layout>
+
+<style>
+ /* Posts list */
+  .postlist {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    list-style: none;
+  }
+    
+  @media screen and (max-width: 769px) {
+    .postlist {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
