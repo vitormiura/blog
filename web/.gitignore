@@ -5,6 +5,9 @@ dist
 node_modules/
 .snowpack/
 
+# bosch proxy
+package-lock.json
+
 # logs
 npm-debug.log*
 yarn-debug.log*

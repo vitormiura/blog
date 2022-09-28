@@ -7,7 +7,7 @@ export default {
   // Facebook URL
   facebookURL: `https://facebook.com`,
   // Twitter URL
-  twitterURL: `https://twitter.com/jaydanurwin`,
+  twitterURL: `https://twitter.com/miuravitorr`,
   // Instagram URL
-  instagramURL: `https://instagram.com/jaydanurwin`,
+  instagramURL: `https://instagram.com/miuraswt`,
 };
