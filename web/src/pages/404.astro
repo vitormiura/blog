@@ -1,0 +1,30 @@
+---
+import Layout from "../layouts/Base.astro";
+import Container from "../components/Container.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const seo = {
+  title: "Uh Oh! Page Not Found",
+  description:
+    "This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.",
+};
+---
+
+<Layout {seo}>
+  <Navbar />
+  <Container>
+    <div class="xd">
+      <h1>404</h1>
+      <p>Pagina nao feita ainda amigo!!!! abra issue pro dev trabaiar!!!!</p>
+      <a href="/">Volte-me para a index!</a>
+    </div>
+  </Container>
+  <Footer />
+</Layout>
+
+<style>
+  .xd{
+    padding-bottom: 15rem;
+  }
+</style>

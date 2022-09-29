@@ -1,0 +1,33 @@
+---
+import Layout from './Base.astro';
+import Container from "../components/Container.astro";
+import ArticleSchema from '../components/ArticleSchema.astro';
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+const { frontmatter } = Astro.props;
+---
+
+<Layout seo={frontmatter}>
+  <Fragment slot="head-bottom">
+  <ArticleSchema {...frontmatter}  />
+ </Fragment>
+ <Navbar />
+  <Container>
+    <article class="post-content__article">
+      <h1>{frontmatter.title}</h1>
+      <time>{frontmatter.publishDate}</time>
+      <div class="img">
+        {frontmatter.image && <img width="400" height="200" class="post-main__img" loading="lazy" src={frontmatter.image} alt={frontmatter.alt} />}
+        <slot />
+      </div>
+    </article>
+  </Container>
+  <Footer/>
+</Layout>
+
+<style>
+  .img{
+    padding-top: 25px;
+    width: 100%;
+  }
+</style>

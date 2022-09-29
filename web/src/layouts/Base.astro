@@ -1,0 +1,26 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import type { Props as BaseHeadProps } from '../components/BaseHead.astro';
+
+
+export interface Props {
+	seo?: BaseHeadProps;
+}
+
+const { seo } = Astro.props;
+---
+
+<html lang="en">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+  <head>
+    <BaseHead {...seo} />
+    <slot name="head-bottom" />
+  </head>
+  <body>
+    <slot name="header" />
+    <main>
+      <slot />
+    </main>
+    <slot name="footer" />
+  </body>
+</html>

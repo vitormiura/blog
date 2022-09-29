@@ -1,0 +1,10 @@
+:root {
+  --container-width: 960px;
+  --container-padding: 1rem;
+}
+
+html,
+body {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  width: 100%;
+}
