@@ -3,6 +3,8 @@ import Layout from '../../layouts/Base.astro'
 import Container from '../../components/Container.astro';
 import BlogPostPreview from '../../components/BlogPostPreview.astro';
 import Paginator from '../../components/Paginator.astro'
+import Navbar from '../../components/Navbar.astro'
+import Footer from '../../components/Footer.astro'
   
   
 export async function getStaticPaths({paginate}) {
@@ -30,7 +32,7 @@ return paginate(posts, {pageSize: 10});
 // All variables are available to use in the HTML template below.
 
 const seo = {
-  title: 'Example Blog',
+  title: 'Vitor Miura - Posts',
   description: 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.'
 }
 
@@ -39,6 +41,7 @@ const { page } = Astro.props;
 
 
 <Layout seo={seo} >
+  <Navbar />
   <Container>
     <article class="blog-page-content__article">
       <section class="postlist">
@@ -47,6 +50,7 @@ const { page } = Astro.props;
     </article>
     <Paginator page={page}/>
   </Container>
+  <Footer />
 </Layout>
 
 <style>
