@@ -43,10 +43,10 @@ const { page } = Astro.props;
 <Layout seo={seo} >
   <Navbar />
   <Container>
-    <h2>=> Posts</h2>
+    <h2>Posts</h2>
     <article class="blog-page-content__article">
       <section class="postlist">
-        {page.data.map((post) => <BlogPostPreview post={post} />)}
+        {page.data.map((post: any) => <BlogPostPreview post={post} />)}
       </section>
     </article>
     <Paginator page={page}/>
