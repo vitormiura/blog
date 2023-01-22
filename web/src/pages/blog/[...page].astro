@@ -32,7 +32,7 @@ return paginate(posts, {pageSize: 10});
 // All variables are available to use in the HTML template below.
 
 const seo = {
-  title: 'Vitor Miura - Posts',
+  title: 'Vitor Miura | Posts',
   description: 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.'
 }
 
@@ -43,9 +43,10 @@ const { page } = Astro.props;
 <Layout seo={seo} >
   <Navbar />
   <Container>
+    <h2>Posts</h2>
     <article class="blog-page-content__article">
       <section class="postlist">
-        {page.data.map((post) => <BlogPostPreview post={post} />)}
+        {page.data.map((post: any) => <BlogPostPreview post={post} />)}
       </section>
     </article>
     <Paginator page={page}/>

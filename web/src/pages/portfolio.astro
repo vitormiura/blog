@@ -1,0 +1,69 @@
+---
+import Layout from "../layouts/Base.astro";
+import Container from "../components/Container.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const seo = {
+  title: "Vitor Miura | Portfolio",
+  description:
+    "This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.",
+};
+---
+
+<Layout {seo}>
+  <Navbar />
+  <Container>
+    <h2>Portfolio</h2>
+    <p>All my recent projects:</p>
+    <div class="oi">
+      <a href="https://github.com/vitormiura/blog">
+        <img
+          src="https://github-readme-stats.vercel.app/api/pin/?username=vitormiura&repo=blog"
+        />
+      </a>
+      <a href="https://github.com/vitormiura/boschview">
+        <img
+          src="https://github-readme-stats.vercel.app/api/pin/?username=vitormiura&repo=boschview"
+        />
+      </a>
+      <a href="https://github.com/vitormiura/moitabank">
+        <img
+          src="https://github-readme-stats.vercel.app/api/pin/?username=vitormiura&repo=moitabank"
+        />
+      </a>
+      <a href="https://github.com/vitormiura/rm-wiki">
+        <img
+          src="https://github-readme-stats.vercel.app/api/pin/?username=vitormiura&repo=rm-wiki"
+        />
+      </a>
+      <a href="https://github.com/vitormiura/notes-app">
+        <img
+          src="https://github-readme-stats.vercel.app/api/pin/?username=vitormiura&repo=notes-app"
+        />
+      </a>
+      <a href="https://github.com/vitormiura/incepta">
+        <img
+          src="https://github-readme-stats.vercel.app/api/pin/?username=vitormiura&repo=incepta"
+        />
+      </a>
+    </div>
+  </Container>
+  <Footer />
+</Layout>
+
+<style>
+  .oi {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 10px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .oi {
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+  }
+</style>
