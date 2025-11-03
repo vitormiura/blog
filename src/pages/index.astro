@@ -14,17 +14,82 @@ const seo = {
 <Layout {seo}>
   <Navbar />
   <Container>
-    <h2>About me</h2>
-    <p>Sup 🤙, my name is Vitor!</p>
-    <p>
-      I’m currently working on my Bachelor of Computer Engineering degree at <a href="https://univesp.br/" target="_blank">Univesp</a> and working on my Technical Degree of Systems Development at <a href="https://www.sp.senai.br/">Senai</a>.
-    </p>
-    <p>
-      At present I'm working as an apprentice at <a
-        href="https://www.bosch.com.br/"
-        target="_blank">Bosch</a
-      >, doing systems development and industrial automation services.
-    </p>
+    <section class="intro">
+      <h1>About me</h1>
+      <p>Hey 👋, my name is Vitor. I'm a brazilian developer and student. Welcome to my little cozy web corner!</p>
+    </section>
+
+    <section class="content">
+      <h2>Interests</h2>
+      <p>
+        I'm interested in Software Engineering, Systems Development, and Industrial Automation. 
+        Currently working with web development and automation technologies.
+      </p>
+      <p>
+        I've been into computers, science and tech since I was little. I love Linux, open source, 
+        and building things that solve real problems.
+      </p>
+    </section>
+
+    <section class="content">
+      <h2>Occupation</h2>
+      <p>
+        I currently work as an apprentice at <a href="https://www.bosch.com.br/" target="_blank">Bosch</a>, 
+        doing systems development and industrial automation services.
+      </p>
+      <p>
+        I'm also working towards a Computer Engineering degree at <a href="https://univesp.br/" target="_blank">Univesp</a> 
+        and a Technical Degree of Systems Development at <a href="https://www.sp.senai.br/" target="_blank">Senai</a>.
+      </p>
+    </section>
+
+    <section class="content social">
+      <h2>Find me</h2>
+      <p>
+        <a href="https://github.com/vitormiura" target="_blank">github</a> · 
+        <a href="https://www.linkedin.com/in/vitormiura/" target="_blank">linkedin</a> · 
+        <a href="https://twitter.com/miuravitorr" target="_blank">twitter</a> · 
+        <a href="https://instagram.com/miuraswt" target="_blank">instagram</a>
+      </p>
+    </section>
   </Container>
   <Footer/>
 </Layout>
+
+<style>
+  .intro {
+    margin-bottom: 3rem;
+  }
+
+  .intro h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .intro p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .content {
+    margin-bottom: 2.5rem;
+  }
+
+  .content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .content p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .social a {
+    text-decoration: underline;
+  }
+
+  .social a:not(:last-child)::after {
+    content: "";
+  }
+</style>

@@ -4,47 +4,159 @@
 
 <div class="navbar">
   <nav>
-    <h1>Vitor Miura</h1>
-    <ul>
-      <a href="/"><li>about</li></a>
-      <a href="/blog"><li>blog</li></a>
-      <a href="/portfolio"><li>portfolio</li></a>
-    </ul>
+    <div class="nav-left">
+      <h1>Vitor Miura</h1>
+      <ul>
+        <a href="/"><li>about</li></a>
+        <a href="/blog"><li>blog</li></a>
+        <a href="/portfolio"><li>portfolio</li></a>
+      </ul>
+    </div>
+    <div class="theme-selector">
+      <select id="theme-select" aria-label="Select theme">
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+        <option value="auto">Auto</option>
+      </select>
+    </div>
   </nav>
 </div>
 <hr/>
 
+<script>
+  const themeSelect = document.getElementById('theme-select') as HTMLSelectElement | null;
+  const themeLink = document.getElementById('water-theme') as HTMLLinkElement | null;
+  
+  // Obter tema atual
+  let currentTheme = localStorage.getItem('theme') || 'dark';
+  
+  // Definir o tema no select
+  if (themeSelect) {
+    themeSelect.value = currentTheme;
+  }
+  
+  // Aplicar tema baseado na seleção
+  function applyTheme(theme: string) {
+    if (!themeLink) return;
+    
+    if (theme === 'auto') {
+      // Detectar preferência do sistema
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const autoTheme = prefersDark ? 'dark' : 'light';
+      themeLink.href = `https://cdn.jsdelivr.net/npm/water.css@2/out/${autoTheme}.css`;
+    } else {
+      themeLink.href = `https://cdn.jsdelivr.net/npm/water.css@2/out/${theme}.css`;
+    }
+  }
+  
+  // Aplicar tema inicial
+  applyTheme(currentTheme);
+  
+  // Listener para mudanças no select
+  if (themeSelect) {
+    themeSelect.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement;
+      const selectedTheme = target.value;
+      localStorage.setItem('theme', selectedTheme);
+      applyTheme(selectedTheme);
+    });
+  }
+  
+  // Listener para mudanças na preferência do sistema (quando auto está selecionado)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    if (themeSelect && themeSelect.value === 'auto') {
+      applyTheme('auto');
+    }
+  });
+</script>
+
 
 
 <style>
-  .navbar{
+  .navbar {
     padding-bottom: 2rem;
   }
   
-  nav a {
-    text-decoration: inherit;
-    color: inherit;
-  }
-
   nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
 
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  nav h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s;
+  }
+
+  nav a:hover {
+    opacity: 0.7;
+  }
+
   nav ul {
-    margin-left: -2.3rem;
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   nav li {
-    font-size: 2.5vh;
-    float: left;
-    list-style: none;
-    padding: 0rem 1rem 0rem 0rem;
-    justify-content: space-between;
+    font-size: 1rem;
   }
 
-  nav .theme {
-    padding: 0%;
-    margin-top: 5px;
-    margin-left: 5rem;
+  .theme-selector select {
+    background: transparent;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    color: inherit;
+    font-family: inherit;
+    transition: all 0.2s;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+    background-size: 1em;
+    padding-right: 2rem;
+  }
+
+  .theme-selector select:hover {
+    opacity: 0.8;
+  }
+
+  .theme-selector select:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-left {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    nav ul {
+      gap: 1rem;
+    }
   }
 </style>

@@ -53,7 +53,21 @@ rel="preload"
 href="https://fonts.googleapis.com/icon?family=Material+Icons"
 as="style"
 onload="this.onload=null;this.rel='stylesheet'">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+<link rel="stylesheet" id="water-theme" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.css">
+<script is:inline>
+  // Carregar tema salvo ou usar dark como padrão
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  const themeLink = document.getElementById('water-theme');
+  
+  if (savedTheme === 'auto') {
+    // Detectar preferência do sistema
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const autoTheme = prefersDark ? 'dark' : 'light';
+    themeLink.href = `https://cdn.jsdelivr.net/npm/water.css@2/out/${autoTheme}.css`;
+  } else {
+    themeLink.href = `https://cdn.jsdelivr.net/npm/water.css@2/out/${savedTheme}.css`;
+  }
+</script>
 <noscript>
   <link
     href="https://fonts.googleapis.com/icon?family=Material+Icons"
